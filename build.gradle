@@ -1,25 +1,35 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.0'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
-
 group = 'edu.pucmm.ia'
 version = '0.0.1-SNAPSHOT'
 
-java {
-    sourceCompatibility = '17'
-}
+sourceCompatibility = 17
+mainClassName = "edu.pucmm.ia.serverlessPrueba2.SeverlessPrueba2Application"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // Ver documentacion en https://github.com/aws/aws-lambda-java-libs
+    // https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-core
+    implementation group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.2'
+    implementation group: 'com.amazonaws', name: 'aws-lambda-java-events', version: '3.11.2'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.12.496'
+    implementation 'com.amazonaws:aws-lambda-java-log4j2:1.5.1'
+    implementation 'software.amazon.awssdk:dynamodb:2.17.102'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.9'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+shadowJar {
+    archiveBaseName.set("demo-serveless")
+    archiveClassifier.set('')
+    archiveVersion.set('0.0.1')
 }

@@ -1,35 +1,35 @@
-package edu.pucmm.ia.ds.funciones;
+package edu.pucmm.ia.serverlessprueba2.funciones;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
-import edu.pucmm.ia.ds.encapsulaciones.Estudiante;
+import edu.pucmm.ia.serverlessprueba2.encapsulaciones.Reserva;
 
 public class RegistroEstudiante {
 
     /**
      * No utilizo la interfaz
-     * @param estudiante
+     * @param reserva
      * @param context
      * @return
      */
-    public RegistroEstudianteResponse registroEstudiante(Estudiante estudiante, Context context){
+    public RegistroEstudianteResponse registroEstudiante(Reserva reserva, Context context){
         LambdaLogger log = context.getLogger();
-        log.log("El estudiante obtenido: "+estudiante.toString());
+        log.log("El estudiante obtenido: "+ reserva.toString());
         //pendiente que hacer.
-        return new RegistroEstudianteResponse(true, estudiante);
+        return new RegistroEstudianteResponse(true, reserva);
     }
 
     static class RegistroEstudianteResponse{
         boolean creado;
-        Estudiante estudiante;
+        Reserva reserva;
 
         public RegistroEstudianteResponse(){
             
         }
 
-        public RegistroEstudianteResponse(boolean creado, Estudiante estudiante) {
+        public RegistroEstudianteResponse(boolean creado, Reserva reserva) {
             this.creado = creado;
-            this.estudiante = estudiante;
+            this.reserva = reserva;
         }
 
         public boolean isCreado() {
@@ -40,12 +40,12 @@ public class RegistroEstudiante {
             this.creado = creado;
         }
 
-        public Estudiante getEstudiante() {
-            return estudiante;
+        public Reserva getEstudiante() {
+            return reserva;
         }
 
-        public void setEstudiante(Estudiante estudiante) {
-            this.estudiante = estudiante;
+        public void setEstudiante(Reserva reserva) {
+            this.reserva = reserva;
         }
     }
 }

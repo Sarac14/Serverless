@@ -1,4 +1,4 @@
-package edu.pucmm.ia.ds.util;
+package edu.pucmm.ia.serverlessprueba2.util;
 
 public class ServerlessHelper {
 

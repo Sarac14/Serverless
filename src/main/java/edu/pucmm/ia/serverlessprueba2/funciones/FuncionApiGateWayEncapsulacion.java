@@ -1,4 +1,4 @@
-package edu.pucmm.ia.ds.funciones;
+package edu.pucmm.ia.serverlessprueba2.funciones;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;

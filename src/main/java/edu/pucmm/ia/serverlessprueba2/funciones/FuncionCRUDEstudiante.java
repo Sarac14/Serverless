@@ -23,10 +23,10 @@ import java.io.*;
  * En caso que estemos utilizando el laboratorio de AWS Academy es necesario incluir el permiso AWSLambdaBasicExecutionRole y de escritura
  * AmazonDynamoDBFullAccess .
  */
-public class FuncionCRUDReserva implements RequestStreamHandler {
+public class FuncionCRUDEstudiante  implements RequestStreamHandler {
 
     //Instanciando objeto el manejo de la base de datos.
-    private ReservaDynamoDbServices dbServices = new ReservaDynamoDbServices();
+    private ReservaDynamoDbServices funcionesDynamoDbEstudiante = new ReservaDynamoDbServices();
     private Gson gson = new Gson();
 
     /**
@@ -63,18 +63,18 @@ public class FuncionCRUDReserva implements RequestStreamHandler {
             //Realizando la operacion
             switch (metodoHttp){
                 case "GET":
-                    ReservaDynamoDbServices.ListarEstudiantesResponse listarEstudiantesResponse = dbServices.listarEstudiantes(null, context);
+                    ReservaDynamoDbServices.ListarEstudiantesResponse listarEstudiantesResponse = funcionesDynamoDbEstudiante.listarEstudiantes(null, context);
                     salida = gson.toJson(listarEstudiantesResponse);
                     break;
                 case "POST":
                 case "PUT":
                     reserva = getEstudianteBodyJson(evento);
-                    dbServices.insertarEstudianteTabla(reserva, context);
+                    funcionesDynamoDbEstudiante.insertarEstudianteTabla(reserva, context);
                     salida = gson.toJson(reserva);
                     break;
                 case "DELETE":
                     reserva = getEstudianteBodyJson(evento);
-                    dbServices.eliminarEstudiante(reserva, context);
+                    funcionesDynamoDbEstudiante.eliminarEstudiante(reserva, context);
                     salida = gson.toJson(reserva);
                     break;
             }

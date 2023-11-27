@@ -5,8 +5,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-import java.time.LocalTime;
-import java.util.Date;
 
 /**
  * Clase que utiliza en enlace para DynamoDB.
@@ -14,7 +12,7 @@ import java.util.Date;
 
 @DynamoDBTable(tableName="reservas")
 
-public class Estudiante {
+public class Reserva {
     private int id;
     private String nombre;
     private String correo;
@@ -24,23 +22,23 @@ public class Estudiante {
    // @DynamoDBAttribute(attributeName = "hora")
     private String hora;
 
-    public Estudiante(){
+    public Reserva(){
         
     }
 
-    public Estudiante(int id, String nombre) {
+    public Reserva(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
-    public Estudiante(int id, String nombre, String correo, String laboratorio) {
+    public Reserva(int id, String nombre, String correo, String laboratorio) {
         this.id = id;
         this.nombre = nombre;
        this.correo = correo;
         this.laboratorio = laboratorio;
     }
 
-    public Estudiante(int id, String nombre, String correo, String laboratorio, String hora, String fecha) {
+    public Reserva(int id, String nombre, String correo, String laboratorio, String hora, String fecha) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
@@ -49,7 +47,7 @@ public class Estudiante {
         this.fecha = fecha;
     }
 
-    public Estudiante(int id, String nombre, String correo) {
+    public Reserva(int id, String nombre, String correo) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
